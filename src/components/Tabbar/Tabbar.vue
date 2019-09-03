@@ -1,23 +1,50 @@
 <template>
   <ul>
-    <li>
-      <i class="el-icon-setting"></i>
-      <div>发现</div>
-    </li>
-    <li>
-      <i class="el-icon-star-off"></i>
-      <div>订阅</div>
-    </li>
-    <li>
-      <i class="el-icon-user"></i>
-      <div>个人</div>
+    <li
+      v-for="icon of iconfonts"
+      :key="icon.id"
+      @click="handleClick(icon.id,$event)"
+      :class="{'active-class':icon.isActive}"
+    >
+      <i :class="[icon.isActive?icon.active_content:icon.inactive_content]"></i>
+      <div>{{icon.text}}</div>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'tabbar'
+  name: 'tabbar',
+  data () {
+    return {
+      iconfonts: [{
+        id: 1,
+        inactive_content: 'el-icon-setting',
+        active_content: 'el-icon-s-tools',
+        text: '发现',
+        isActive: false
+      }, {
+        id: 2,
+        inactive_content: 'el-icon-star-off',
+        active_content: 'el-icon-star-on',
+        text: '订阅',
+        isActive: false
+      }, {
+        id: 3,
+        inactive_content: 'el-icon-user',
+        active_content: 'el-icon-user-solid',
+        text: '个人',
+        isActive: false
+      }]
+    }
+  },
+  methods: {
+    handleClick (id, e) {
+      this.iconfonts.forEach((obj) => {
+        obj.isActive = (obj.id === id)
+      })
+    }
+  }
 }
 </script>
 
@@ -26,7 +53,6 @@ ul {
   display: flex;
   width: 100%;
   flex-direction: row;
-  /* justify-content: space-around; */
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -45,16 +71,10 @@ li {
 }
 
 li > div {
-    font-size: 8px;
+  font-size: 8px;
 }
 
-li:active{
-    color: #409EFF;
+.active-class {
+  color: #409eff;
 }
-/* .el-col {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: 12px;
-} */
 </style>
