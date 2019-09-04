@@ -8,6 +8,8 @@ import './plugins/element.js'
 // import './assets/styles/reset.css'
 // 1像素边框
 import './assets/styles/border.css'
+// iconfont
+import '@/assets/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 
