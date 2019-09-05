@@ -67,7 +67,7 @@ li {
   list-style-type: none;
   padding: 0.5rem 0;
   color: #8b8b8b;
-  background: rgba(216, 216, 216, 0.6);
+  background: rgba(216, 216, 216, 0.8);
 }
 
 li > div {
