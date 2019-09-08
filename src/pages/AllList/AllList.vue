@@ -7,7 +7,7 @@
 
 <script>
 import ListHeader from './components/Header'
-import ListBody from './components/ListBody'
+import ListBody from './components/AllListBody'
 export default {
   name: 'AllList',
   components: {

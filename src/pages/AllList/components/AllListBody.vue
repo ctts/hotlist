@@ -8,7 +8,10 @@
         v-for="item of sourceList"
         :key="item.id"
       >
-        <img :src="item.imgsrc">
+        <img
+          :src="item.imgsrc"
+          @click="handleIconClick(item.name)"
+        >
         <p>{{item.title}}</p>
       </el-col>
     </el-row>
@@ -23,28 +26,41 @@ export default {
       sourceList: [{
         id: 1,
         imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜'
+        title: '微博热搜榜',
+        name: 'weibo'
       }, {
         id: 2,
         imgsrc: '../static/images/zhihu.png',
-        title: '知乎热搜榜'
+        title: '知乎热搜榜',
+        name: 'zhihu'
       }, {
         id: 3,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜'
+        imgsrc: '../static/images/baidu.png',
+        title: '微博热搜榜',
+        name: 'baidu'
       }, {
         id: 4,
         imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜'
+        title: '微博热搜榜',
+        name: 'zhihu'
       }, {
         id: 5,
         imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜'
+        title: '微博热搜榜',
+        name: 'zhihu'
       }, {
         id: 6,
         imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜'
+        title: '微博热搜榜',
+        name: 'zhihu'
       }]
+    }
+  },
+  methods: {
+    handleIconClick (name) {
+      this.$router.push({
+        path: `/hotlist/${name}`
+      })
     }
   }
 }

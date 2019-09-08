@@ -1,7 +1,7 @@
 <template>
   <div>
     <list-header></list-header>
-    <list-body></list-body>
+    <list-body :webname="webname"></list-body>
   </div>
 </template>
 
@@ -13,6 +13,15 @@ export default {
   components: {
     ListHeader,
     ListBody
+  },
+  data () {
+    return {
+      webname: null
+    }
+  },
+  created: function () {
+    // 通过路由获取传递来的数据，并传递给子组件
+    this.webname = this.$route.params.name
   }
 }
 </script>

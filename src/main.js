@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './plugins/element.js'
-// 引入初始化css
-// import './assets/styles/reset.css'
 // 1像素边框
 import './assets/styles/border.css'
 // iconfont
 import '@/assets/iconfont/iconfont.css'
+// axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 

@@ -13,15 +13,19 @@ export default new Router({
     name: 'AllList',
     component: AllList
   }, {
+    path: '/alllist',
+    name: 'AllList',
+    component: AllList
+  }, {
     path: '/subscribe',
-    name: 'MySubscribe',
+    name: 'Subscribe',
     component: MySubscribe
   }, {
     path: '/person',
-    name: 'PersonalCenter',
+    name: 'Person',
     component: PersonalCenter
   }, {
-    path: '/hotlist',
+    path: '/hotlist/:name',
     name: 'HotList',
     component: HotList
   }]
