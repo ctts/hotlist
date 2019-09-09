@@ -10,8 +10,7 @@ Vue.use(Router)
 export default new Router({
   routes: [{
     path: '/',
-    name: 'AllList',
-    component: AllList
+    redirect: '/alllist'
   }, {
     path: '/alllist',
     name: 'AllList',

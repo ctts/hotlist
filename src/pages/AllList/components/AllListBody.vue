@@ -1,26 +1,43 @@
 <template>
-  <div>
-    <p>热门榜单</p>
-    <el-row :gutter="10">
-      <el-col
-        :gutter="10"
-        :span="6"
+  <div class="container">
+    <!-- title -->
+    <div class="title">
+      <slot></slot>
+    </div>
+    <!-- list -->
+    <div class="list-wapper">
+      <list-item
         v-for="item of sourceList"
         :key="item.id"
       >
-        <img
-          :src="item.imgsrc"
-          @click="handleIconClick(item.name)"
-        >
-        <p>{{item.title}}</p>
-      </el-col>
-    </el-row>
+        <template v-slot:icon>
+          <div>
+            <img :src="item.imgsrc">
+          </div>
+        </template>
+        <template v-slot:title>
+          <div>
+            {{item.title}}
+          </div>
+        </template>
+      </list-item>
+      <div
+        v-for="(temp,index) of (4-sourceList.length%4)"
+        :key="index"
+        class="list-item-temp"
+      >
+      </div>
+    </div>
   </div>
 
 </template>
 <script>
+import ListItem from '../../../components/ListItem/ListItem'
 export default {
   name: 'listBody',
+  components: {
+    ListItem
+  },
   data () {
     return {
       sourceList: [{
@@ -67,16 +84,27 @@ export default {
 </script>
 
 <style lang="" scoped>
-.el-col {
-  text-align: center;
-  overflow: hidden;
+.list-wapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
 }
-img {
-  width: 100%;
-  height: 100%;
+
+.container {
+  padding: 0.5rem;
+  background: #fff;
+  margin: 0.3rem 0rem;
 }
-p {
-  margin: 0.1rem;
-  font-size: 10px;
+
+.title {
+  font-size: 14px;
+  padding: 0.1rem 0.2rem 0.5rem 0.2rem;
+  border-bottom: #f6f6f6 1.5px solid;
+  margin-bottom: 0.5rem;
+}
+
+.list-item-temp{
+  width: 4rem;
 }
 </style>

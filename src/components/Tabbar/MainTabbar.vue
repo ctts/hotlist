@@ -75,6 +75,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  box-shadow: 0 -10 2px rgba(100, 100, 100, 0.2);
 
   position: fixed;
   left: 0;
@@ -86,7 +87,6 @@ export default {
   flex: 1;
   height: 49px;
   background: #f6f6f6;
-  box-shadow: 0 -10 2px rgba(100, 100, 100, 0.2);
   text-align: center;
 }
 </style>
