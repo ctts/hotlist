@@ -7,8 +7,10 @@
     <!-- list -->
     <div class="list-wapper">
       <list-item
+        @click="test()"
         v-for="item of sourceList"
         :key="item.id"
+        :path="item.name"
       >
         <template v-slot:icon>
           <div>
@@ -22,8 +24,8 @@
         </template>
       </list-item>
       <div
-        v-for="(temp,index) of (4-sourceList.length%4)"
-        :key="index"
+        v-for="item of (4-sourceList.length%4)"
+        :key="item+'-label'"
         class="list-item-temp"
       >
       </div>
@@ -74,10 +76,8 @@ export default {
     }
   },
   methods: {
-    handleIconClick (name) {
-      this.$router.push({
-        path: `/hotlist/${name}`
-      })
+    test () {
+      alert(1)
     }
   }
 }
@@ -104,7 +104,7 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-.list-item-temp{
+.list-item-temp {
   width: 4rem;
 }
 </style>

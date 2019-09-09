@@ -51,8 +51,20 @@ export default {
     ListHeader,
     ListBody
   },
+  data () {
+    return {
+      options: {
+        scrollY: true,
+        scrollX: false,
+        mouseWheel: true,
+        click: true,
+        taps: true
+      }
+    }
+  },
   mounted: function () {
-    this.scroll = new Bscroll(this.$refs.listContant)
+    // options是better-scroll配置参数
+    this.scroll = new Bscroll(this.$refs.listContant, this.options)
   }
 }
 </script>

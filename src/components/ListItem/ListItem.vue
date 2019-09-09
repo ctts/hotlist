@@ -1,7 +1,7 @@
 <template>
   <div
-    @click="handleItemClick"
     class="item"
+    @click="handleItemClick"
   >
     <div>
       <slot name="icon"></slot>
@@ -19,7 +19,8 @@ export default {
   },
   methods: {
     handleItemClick () {
-      this.$router.push(this.path)
+      console.log('1')
+      this.$router.push({ name: 'hotlist', params: { name: this.path } })
     }
   }
 }
