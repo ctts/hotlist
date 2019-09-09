@@ -8,6 +8,7 @@ import './plugins/element.js'
 import './assets/styles/border.css'
 // iconfont
 import '@/assets/iconfont/iconfont.css'
+import '@/assets/iconfont/iconfont.js'
 // axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'

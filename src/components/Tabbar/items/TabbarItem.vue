@@ -2,7 +2,6 @@
   <div
     class="tabbar-item"
     @click="handleItemClick"
-    :style="currentColor"
   >
     <slot
       v-if="isActive"
@@ -36,9 +35,6 @@ export default {
   computed: {
     isActive () {
       return this.$route.path.indexOf(this.path) === 0
-    },
-    currentColor () {
-      return this.isActive ? { color: this.activeColor } : {}
     }
   }
 }
@@ -50,6 +46,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>

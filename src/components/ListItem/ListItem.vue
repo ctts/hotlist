@@ -9,6 +9,9 @@
     <div>
       <slot name="title"></slot>
     </div>
+    <div>
+      <slot name="switch"></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -20,7 +23,7 @@ export default {
   methods: {
     handleItemClick () {
       console.log('1')
-      this.$router.push({ name: 'hotlist', params: { name: this.path } })
+      this.$router.push({ name: 'HotList', params: { name: this.path } })
     }
   }
 }

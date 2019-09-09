@@ -3,19 +3,13 @@
     <!-- 头部 -->
     <list-header>
       <template v-slot:left>
-        <div>
-          左
-        </div>
+        左
       </template>
       <template v-slot:content>
-        <div>
-          所有标签
-        </div>
+        所有标签
       </template>
       <template v-slot:right>
-        <div>
-          右
-        </div>
+        右
       </template>
     </list-header>
     <!-- 所有榜单 -->
@@ -43,7 +37,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
-import ListHeader from '../../components/PageHeader/PageHeader'
+import ListHeader from '@/components/PageHeader/PageHeader'
 import ListBody from './components/AllListBody'
 export default {
   name: 'AllList',

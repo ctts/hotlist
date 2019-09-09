@@ -7,16 +7,20 @@
       class="tabbar-item"
     >
       <template v-slot:activeIconfont>
-        <i
-          v-html="item.active_content"
-          class="element-icons"
-        ></i>
+        <svg
+          class="icon"
+          aria-hidden="true"
+        >
+          <use :xlink:href="item.active_content"></use>
+        </svg>
       </template>
       <template v-slot:inactiveIconfont>
-        <i
-          v-html="item.inactive_content"
-          class="element-icons"
-        ></i>
+        <svg
+          class="icon"
+          aria-hidden="true"
+        >
+          <use :xlink:href="item.inactive_content"></use>
+        </svg>
       </template>
       <template v-slot:text>
         <div>{{item.text}}</div>
@@ -36,22 +40,22 @@ export default {
     return {
       iconfonts: [{
         id: 1,
-        inactive_content: '&#xe6b8',
-        active_content: '&#xe6bd',
+        inactive_content: '#el-iconfaxian2',
+        active_content: '#el-iconfaxian1',
         text: '发现',
         to: '/alllist',
         isActive: true
       }, {
         id: 2,
-        inactive_content: '&#xe603',
-        active_content: '&#xe8ec',
+        inactive_content: '#el-iconwujiaoxing_kong',
+        active_content: '#el-iconstar-copy',
         text: '订阅',
         to: '/subscribe',
         isActive: true
       }, {
         id: 3,
-        inactive_content: '&#xe663',
-        active_content: '&#xe653',
+        inactive_content: '#el-iconicon7',
+        active_content: '#el-icongerenzhongxin1',
         text: '个人',
         to: '/person',
         isActive: true
