@@ -31,6 +31,7 @@ export default {
   background: #409eff;
   color: #fff;
   z-index: 100;
+  font-weight: 550;
 
   position: fixed;
   left: 0;
@@ -50,7 +51,9 @@ export default {
   flex: 1;
 }
 
-.placeholder{
+.placeholder {
   height: 49px;
+  margin: 0;
+  padding: 0;
 }
 </style>

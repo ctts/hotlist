@@ -1,9 +1,9 @@
 <template>
   <el-container>
-    <el-aside width="6.5rem"><img src="../../../../static/images/head.jpg"></el-aside>
+    <el-aside width="6.5rem"><img :src="headsrc"></el-aside>
     <el-container>
       <el-header height="3rem">
-        <div>参天桃树</div>
+        {{username}}
       </el-header>
       <el-footer>
         <el-button type="danger">安全退出</el-button>
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-  name: 'self'
+  name: 'self',
+  props: {
+    username: String,
+    headsrc: String
+  }
+
 }
 </script>
 
@@ -30,13 +35,13 @@ export default {
   justify-content: start;
 }
 
-.el-footer{
-    display: flex;
-    align-items: center;
+.el-footer {
+  display: flex;
+  align-items: center;
 }
 
-.el-button{
-    width: 10rem;
+.el-button {
+  width: 10rem;
 }
 
 .head {

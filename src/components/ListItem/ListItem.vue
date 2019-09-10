@@ -5,7 +5,7 @@
       class="item"
       @click="handleItemClick"
     >
-      <div>
+      <div class="icon-container">
         <slot name="icon"></slot>
       </div>
       <div>
@@ -71,6 +71,10 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+}
+
+.icon-container {
+  height: 4rem;
 }
 
 img {

@@ -2,14 +2,8 @@
   <div>
     <!-- 头部 -->
     <list-header>
-      <template v-slot:left>
-        左
-      </template>
       <template v-slot:content>
         所有标签
-      </template>
-      <template v-slot:right>
-        右
       </template>
     </list-header>
     <!-- 所有榜单 -->

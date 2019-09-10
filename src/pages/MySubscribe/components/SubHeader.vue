@@ -1,8 +1,6 @@
 <template>
   <page-header>
-    <template v-slot:left>左</template>
     <template v-slot:content>快速订阅</template>
-    <template v-slot:right>右</template>
   </page-header>
 </template>
 

@@ -7,7 +7,6 @@
     <!-- list -->
     <div class="list-wapper">
       <list-item
-        @click="test()"
         v-for="item of sourceList"
         :key="item.id"
         :path="item.name"
@@ -69,11 +68,6 @@ export default {
         title: '微博热搜榜',
         name: 'zhihu'
       }]
-    }
-  },
-  methods: {
-    test () {
-      alert(1)
     }
   }
 }
