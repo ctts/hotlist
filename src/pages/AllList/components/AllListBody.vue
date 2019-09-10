@@ -13,14 +13,10 @@
         :path="item.name"
       >
         <template v-slot:icon>
-          <div>
-            <img :src="item.imgsrc">
-          </div>
+          <img :src="item.imgsrc">
         </template>
         <template v-slot:title>
-          <div>
-            {{item.title}}
-          </div>
+          {{item.title}}
         </template>
       </list-item>
       <div
@@ -34,7 +30,7 @@
 
 </template>
 <script>
-import ListItem from '../../../components/ListItem/ListItem'
+import ListItem from '@/components/ListItem/ListItem'
 export default {
   name: 'listBody',
   components: {
@@ -88,7 +84,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: flex-start;
 }
 
 .container {

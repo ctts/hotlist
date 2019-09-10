@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AllList from '@/pages/AllList/AllList'
-import MySubscribe from '@/pages/MySubscribe/MySubscribe'
+import MySubscribe from '@/pages/MySubscribe/Subscribe'
 import PersonalCenter from '@/pages/PersonalCenter/PersonalCenter'
 import HotList from '@/pages/HotList/HotList'
 

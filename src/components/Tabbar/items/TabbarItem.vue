@@ -3,15 +3,20 @@
     class="tabbar-item"
     @click="handleItemClick"
   >
-    <slot
-      v-if="isActive"
-      name="activeIconfont"
-    ></slot>
-    <slot
-      v-else
-      name="inactiveIconfont"
-    ></slot>
-    <slot name="text"></slot>
+    <div v-show="isActive">
+      <slot name="activeIconfont"></slot>
+    </div>
+    <div v-show="!isActive">
+      <slot name="inactiveIconfont"></slot>
+    </div>
+
+    <div :class="{'text':isActive}">
+      <slot
+        name="text"
+        style="color:blue"
+      ></slot>
+    </div>
+
   </div>
 </template>
 
@@ -19,11 +24,7 @@
 export default {
   name: 'tabbarItem',
   props: {
-    path: String,
-    activeColor: {
-      type: String,
-      default: '#409eff'
-    }
+    path: String
   },
   methods: {
     handleItemClick () {
@@ -46,14 +47,18 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .icon {
-  width: 1em;
-  height: 1em;
+  width: 1.5em;
+  height: 1.5em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+.text {
+  color: #409eff;
 }
 </style>
