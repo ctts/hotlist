@@ -53,6 +53,12 @@ export default {
   mounted: function () {
     // options是better-scroll配置参数
     this.scroll = new Bscroll(this.$refs.listContant, this.options)
+    // 获取所有webtitle,并存储localstorage
+    localStorage.setItem('allwebs', JSON.stringify({
+      'weibo': '微博',
+      'zhihu': '知乎',
+      'baidu': '百度'
+    }))
   }
 }
 </script>

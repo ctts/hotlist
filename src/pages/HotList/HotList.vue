@@ -1,27 +1,28 @@
 <template>
   <div>
-    <list-header></list-header>
-    <list-body :webname="webname"></list-body>
+    <list-header>
+      <template v-slot:content>{{headername}}</template>
+    </list-header>
+    <list-title></list-title>
+    <list-body></list-body>
   </div>
 </template>
 
 <script>
-import ListHeader from './componemts/ListHeader'
-import ListBody from './componemts/ListBody'
+import ListHeader from '../../components/PageHeader/PageHeader'
+import ListTitle from './componemts/HotListTitle'
+import ListBody from './componemts/HotListBody'
 export default {
   name: 'HotList',
   components: {
-    ListHeader,
-    ListBody
+    ListTitle,
+    ListBody,
+    ListHeader
   },
   data () {
     return {
-      webname: null
+      headername: this.$store.getters.getlist.title
     }
-  },
-  created: function () {
-    // 通过路由获取传递来的数据，并传递给子组件
-    this.webname = this.$route.params.name
   }
 }
 </script>

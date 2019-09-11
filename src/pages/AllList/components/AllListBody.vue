@@ -8,8 +8,8 @@
     <div class="list-wapper">
       <list-item
         v-for="item of sourceList"
+        @click.native="handleIconClick(item)"
         :key="item.id"
-        :path="item.name"
       >
         <template v-slot:icon>
           <img :src="item.imgsrc">
@@ -31,9 +31,15 @@
 <script>
 import ListItem from '@/components/ListItem/ListItem'
 export default {
-  name: 'listBody',
+  name: 'alllistBody',
   components: {
     ListItem
+  },
+  methods: {
+    handleIconClick (item) {
+      // 将icon的属性保存在store
+      this.$store.commit('setlist', item)
+    }
   },
   data () {
     return {
@@ -41,32 +47,38 @@ export default {
         id: 1,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
-        name: 'weibo'
+        name: 'weibo',
+        state: true
       }, {
         id: 2,
         imgsrc: '../static/images/zhihu.png',
         title: '知乎热搜榜',
-        name: 'zhihu'
+        name: 'zhihu',
+        state: false
       }, {
         id: 3,
         imgsrc: '../static/images/baidu.png',
         title: '微博热搜榜',
-        name: 'baidu'
+        name: 'baidu',
+        state: true
       }, {
         id: 4,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
-        name: 'zhihu'
+        name: 'zhihu',
+        state: true
       }, {
         id: 5,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
-        name: 'zhihu'
+        name: 'zhihu',
+        state: true
       }, {
         id: 6,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
-        name: 'zhihu'
+        name: 'zhihu',
+        state: true
       }]
     }
   }

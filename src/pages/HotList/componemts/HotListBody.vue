@@ -1,6 +1,5 @@
 <template>
   <div class="list-container">
-    <div>{{titleName}}</div>
     <div
       v-for='item of hotData'
       :key='item.id'
@@ -18,13 +17,10 @@
 <script>
 export default {
   name: 'ListBody',
-  props: {
-    webname: String
-  },
   data () {
     return {
       hotData: null,
-      titleName: null
+      webname: this.$store.getters.getlist.name
     }
   },
   created: function () {
@@ -33,8 +29,6 @@ export default {
     })
       .then(response => {
         this.hotData = response.data.listData
-        this.titleName = response.data.titleName.name
-        console.log(response.data)
       })
       .catch((err) => {
         console.log(err)

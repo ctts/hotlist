@@ -12,14 +12,17 @@ import '@/assets/iconfont/iconfont.js'
 // axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
+// vuex
+import store from '../store/store'
 
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

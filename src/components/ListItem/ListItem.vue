@@ -31,7 +31,6 @@
 export default {
   name: 'ListItem',
   props: {
-    path: String,
     state: Boolean
   },
   data () {
@@ -41,11 +40,12 @@ export default {
   },
   methods: {
     handleItemClick () {
-      this.$router.push({ name: 'HotList', params: { name: this.path } })
+      // 页面跳转路由
+      this.$router.push({ name: 'HotList' })
     },
     handleSwitchClick () {
+      // 状态切换
       this.isActive = !this.isActive
-      console.log(this.isActive)
     }
   }
 }
@@ -75,6 +75,7 @@ export default {
 
 .icon-container {
   height: 4rem;
+  width: 4rem;
 }
 
 img {

@@ -26,7 +26,7 @@ import ListHeader from '../../components/PageHeader/PageHeader'
 import Self from './components/Self'
 import History from './components/History'
 export default {
-  name: 'EachList',
+  name: 'PersonalCenter',
   data () {
     return {
       username: '参天桃树',

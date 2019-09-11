@@ -2,6 +2,7 @@
   <div class="icon-list">
     <list-item
       v-for="item of sourceList"
+      @click.native="handleIconClick(item)"
       :key="item.id"
       :state="item.state"
     >
@@ -49,48 +50,51 @@ export default {
         id: 1,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
+        name: 'weibo',
         state: true
       }, {
         id: 2,
         imgsrc: '../static/images/zhihu.png',
         title: '知乎热搜榜',
+        name: 'zhihu',
         state: true
       }, {
         id: 3,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
+        name: 'weibo',
         state: true
       }, {
         id: 4,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
+        name: 'weibo',
         state: true
       }, {
         id: 5,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
+        name: 'weibo',
         state: true
       }, {
         id: 6,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
+        name: 'weibo',
         state: true
       }]
     }
   },
   methods: {
-    handleSwitch (id) {
-      this.sourceList.forEach((obj) => {
-        if (obj.id === id) {
-          obj.state = !obj.state
-        }
-      })
+    handleIconClick (item) {
+      // 将icon的属性保存在store
+      this.$store.commit('setlist', item)
     }
   }
 }
 </script>
 
-<style lang="" scoped>
+<style scoped>
 img {
   width: 100%;
   height: 100%;
