@@ -23,7 +23,7 @@ export default {
       webname: this.$store.getters.getlist.name
     }
   },
-  created: function () {
+  mounted: function () {
     this.axios(`http://localhost:3000/${this.webname}`, {
       method: 'get'
     })
@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .list-container {
-  padding: 1rem;
+  padding: 1rem 0.2rem;
 }
 
 .list-item {
@@ -47,9 +47,23 @@ export default {
   align-items: center;
   height: 3rem;
   border-bottom: 1px solid #000;
+  padding: 0.2rem 0;
 }
 
 span {
-  width: 2.4rem;
+  /* width: 2.4rem; */
+  margin-right: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*控制在2行*/
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  color: #000;
 }
 </style>

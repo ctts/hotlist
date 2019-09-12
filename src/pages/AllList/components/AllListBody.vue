@@ -8,7 +8,7 @@
     <div class="list-wapper">
       <list-item
         v-for="item of sourceList"
-        @click.native="handleIconClick(item)"
+        @click.native.capture="handleIconClick(item)"
         :key="item.id"
       >
         <template v-slot:icon>
@@ -57,15 +57,15 @@ export default {
         state: false
       }, {
         id: 3,
-        imgsrc: '../static/images/baidu.png',
-        title: '微博热搜榜',
-        name: 'baidu',
+        imgsrc: '../static/images/haoqixin.png',
+        title: '好奇心日报',
+        name: 'haoqixin',
         state: true
       }, {
         id: 4,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'zhihu',
+        imgsrc: '../static/images/github.png',
+        title: 'github榜',
+        name: 'github',
         state: true
       }, {
         id: 5,

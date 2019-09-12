@@ -41,7 +41,11 @@ export default {
   methods: {
     handleItemClick () {
       // 页面跳转路由
-      this.$router.push({ name: 'HotList' })
+      this.$nextTick(() => {
+        this.$router.push({
+          name: 'HotList'
+        })
+      })
     },
     handleSwitchClick () {
       // 状态切换

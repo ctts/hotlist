@@ -24,7 +24,7 @@ export default new Router({
     name: 'Person',
     component: PersonalCenter
   }, {
-    path: '/hotlist/:name',
+    path: '/hotlist',
     name: 'HotList',
     component: HotList
   }]

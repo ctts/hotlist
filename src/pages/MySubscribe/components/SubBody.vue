@@ -2,7 +2,7 @@
   <div class="icon-list">
     <list-item
       v-for="item of sourceList"
-      @click.native="handleIconClick(item)"
+      @click.native.capture="handleIconClick(item)"
       :key="item.id"
       :state="item.state"
     >
@@ -44,6 +44,12 @@ export default {
   components: {
     ListItem
   },
+  methods: {
+    handleIconClick (item) {
+      // 将icon的属性保存在store
+      this.$store.commit('setlist', item)
+    }
+  },
   data () {
     return {
       sourceList: [{
@@ -57,18 +63,18 @@ export default {
         imgsrc: '../static/images/zhihu.png',
         title: '知乎热搜榜',
         name: 'zhihu',
-        state: true
+        state: false
       }, {
         id: 3,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'weibo',
+        imgsrc: '../static/images/haoqixin.png',
+        title: '好奇心日报',
+        name: 'haoqixin',
         state: true
       }, {
         id: 4,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'weibo',
+        imgsrc: '../static/images/github.png',
+        title: 'github榜',
+        name: 'github',
         state: true
       }, {
         id: 5,
@@ -83,12 +89,6 @@ export default {
         name: 'weibo',
         state: true
       }]
-    }
-  },
-  methods: {
-    handleIconClick (item) {
-      // 将icon的属性保存在store
-      this.$store.commit('setlist', item)
     }
   }
 }
