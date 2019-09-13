@@ -42,10 +42,10 @@ export default {
 }
 
 .left {
-  width: 4rem;
+  width: 3rem;
 }
 .right {
-  width: 4rem;
+  width: 3rem;
 }
 .content {
   flex: 1;

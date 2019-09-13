@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .list-container {
-  padding: 1rem 0.2rem;
+  padding: 0 0.2rem;
 }
 
 .list-item {
@@ -47,7 +47,7 @@ export default {
   align-items: center;
   height: 3rem;
   border-bottom: 1px solid #000;
-  padding: 0.2rem 0;
+  padding: 0.2rem 0.3rem;
 }
 
 span {

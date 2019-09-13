@@ -19,7 +19,7 @@
         </template>
       </list-item>
       <div
-        v-for="item of (4-sourceList.length%4)"
+        v-for="item of (useWidth-sourceList.length%useWidth)"
         :key="item+'-label'"
         class="list-item-temp"
       >
@@ -43,6 +43,7 @@ export default {
   },
   data () {
     return {
+      screenWidth: document.body.clientWidth,
       sourceList: [{
         id: 1,
         imgsrc: '../static/images/weibo.png',
@@ -80,6 +81,11 @@ export default {
         name: 'zhihu',
         state: true
       }]
+    }
+  },
+  computed: {
+    useWidth () {
+      return Math.floor(this.screenWidth / 64)
     }
   }
 }

@@ -55,7 +55,8 @@ export default {
   width: 5rem;
   height: 5rem;
   background: #fff;
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  border-radius: 20px;
 }
 
 img {

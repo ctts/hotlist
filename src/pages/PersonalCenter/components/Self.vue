@@ -1,16 +1,17 @@
 <template>
-  <el-container>
-    <el-aside width="6.5rem"><img :src="headsrc"></el-aside>
-    <el-container>
-      <el-header height="3rem">
-        {{username}}
-      </el-header>
-      <el-footer>
-        <el-button type="danger">安全退出</el-button>
-      </el-footer>
-    </el-container>
-  </el-container>
-
+  <div class="self-container">
+    <div><img :src="headsrc"></div>
+    <div class="info">
+      <div>
+        <!-- {{username}} -->
+        前往注册/登录
+      </div>
+      <div>
+        <!-- <el-button type="danger">安全退出</el-button> -->
+        <el-button type="success">前往注册/登录</el-button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,29 +26,18 @@ export default {
 </script>
 
 <style scoped>
-.el-container {
-  height: 6.5rem;
-}
-
-.el-header {
+.self-container {
   display: flex;
-  align-items: center;
-  justify-content: start;
+  height: 6rem;
+  padding: 0.5rem;
+  background: #eeeeee;
 }
 
-.el-footer {
+.info {
   display: flex;
-  align-items: center;
-}
-
-.el-button {
-  width: 10rem;
-}
-
-.head {
-  height: 3rem;
-  display: flex;
-  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -55,5 +45,9 @@ img {
   width: 6rem;
   height: 6rem;
   border-radius: 5px;
+}
+
+.el-button {
+  width: 10rem;
 }
 </style>
