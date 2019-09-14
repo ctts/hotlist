@@ -13,7 +13,7 @@ import '@/assets/iconfont/iconfont.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 // vuex
-import store from '../store/store'
+import store from './store/store'
 
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false

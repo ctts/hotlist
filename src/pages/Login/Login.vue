@@ -87,6 +87,9 @@ export default {
         .post('http://localhost:3000/login', this.userdata)
         .then(res => {
           if (res.data.result === 1 || res.data.result === 2) {
+            this.$store.commit('setUser', this.userdata)
+            console.log(this.$store.getters.getUser)
+            this.$router.replace({ name: 'Person' })
           }
         })
     }

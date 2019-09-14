@@ -11,10 +11,7 @@
       ref="historylist"
     >
       <div>
-        <self
-          :username="username"
-          :headsrc="headsrc"
-        ></self>
+        <self></self>
         <!-- 历史记录 -->
         <h5>浏览历史</h5>
         <div class="history-list">
@@ -40,8 +37,7 @@ export default {
   name: 'PersonalCenter',
   data () {
     return {
-      username: '参天桃树',
-      headsrc: '../../../../static/images/head.jpg',
+      // headsrc: '../../../../static/images/head.jpg',
       historySource: [{
         id: 1,
         imgsrc: '../static/images/weibo.png',
@@ -109,7 +105,7 @@ h5 {
   margin: 0.2rem 0.5rem;
 }
 
-.history-list{
+.history-list {
   margin: 0 0.3rem;
 }
 
