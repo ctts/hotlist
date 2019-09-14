@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="header">
-      <div class="left">
+      <div
+        class="left"
+        @click="turnBack"
+      >
         <slot name="left"></slot>
       </div>
       <div class="content">
@@ -18,7 +21,12 @@
 
 <script>
 export default {
-  name: 'PageHeader'
+  name: 'PageHeader',
+  methods: {
+    turnBack () {
+      this.$router.back(-1)
+    }
+  }
 }
 </script>
 

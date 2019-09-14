@@ -16,22 +16,15 @@
         {{item.title}}
       </template>
       <template v-slot:activeSwitch>
-        <svg
-          class="icon"
-          aria-hidden="true"
+        <el-switch
+          v-model="item.state"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
         >
-          <use xlink:href="#el-icon39kaiguankai2"></use>
-        </svg>
-      </template>
-      <template v-slot:inactiveSwitch>
-        <svg
-          class="icon"
-          aria-hidden="true"
-        >
-          <use xlink:href='#el-icon38kaiguanguan1'></use>
-        </svg>
+        </el-switch>
       </template>
     </list-item>
+
     <div
       v-for="item of (useWidth-sourceList.length%useWidth)"
       :key="item+'-label'"

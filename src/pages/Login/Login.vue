@@ -15,25 +15,36 @@
       <el-form
         label-position="right"
         :model="userdata"
+        :rules="rules"
+        ref="ruleForm"
       >
-        <el-form-item label="">
-          <el-input v-model="userdata.username" placeholder="账号"></el-input>
+        <el-form-item prop="username">
+          <el-input
+            v-model="userdata.username"
+            placeholder="账号"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="">
+        <el-form-item prop="password">
           <el-input
             v-model="userdata.password"
-            password="password"
+            :type="showType"
             placeholder="密码"
-          ></el-input>
+            autocomplete="off"
+          ><i
+              slot="suffix"
+              class="element-icons"
+              :class="eyes"
+              @click="lookOrHide"
+            ></i></el-input>
         </el-form-item>
       </el-form>
       <el-button
         type="success"
         plain
+        @click="login"
       >登录/注册</el-button>
-
     </div>
-
   </div>
 </template>
 
@@ -45,12 +56,45 @@ export default {
     return {
       userdata: {
         username: '',
-        password: ''
+        password: '',
+        userimg: ''
+      },
+      eyes: 'el-iconclose-eye',
+      rules: {
+        username: [
+          { required: true, message: '请输入帐号', trigger: 'blur' },
+          { min: 3, max: 11, message: '账号长度在3-11个字符', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 3, max: 11, message: '密码长度在3-11个字符', trigger: 'blur' }
+        ]
       }
     }
   },
   components: {
     LoginHead
+  },
+  methods: {
+    lookOrHide () {
+      this.eyes = this.eyes === 'el-iconclose-eye' ? 'el-iconyanjing' : 'el-iconclose-eye'
+    },
+    login () {
+      if (this.userdata.username.trim() === '' || this.userdata.password.trim() === '') {
+        return
+      }
+      this.axios
+        .post('http://localhost:3000/login', this.userdata)
+        .then(res => {
+          if (res.data.result === 1 || res.data.result === 2) {
+          }
+        })
+    }
+  },
+  computed: {
+    showType () {
+      return this.eyes === 'el-iconclose-eye' ? 'password' : 'text'
+    }
   }
 }
 </script>
@@ -82,15 +126,11 @@ img {
 }
 
 .el-form-item {
-  margin: 0.5rem 0.1rem;
-}
-
-.el-form {
-  padding-top: 1rem;
+  margin: 1.2rem 0.1rem;
 }
 
 .el-button {
   width: 10rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 </style>

@@ -13,17 +13,8 @@
       </div>
     </div>
     <!-- 开关 -->
-    <div
-      class="switch"
-      @click="handleSwitchClick"
-    >
-      <div v-show="isActive">
-        <slot name="activeSwitch"></slot>
-      </div>
-      <div v-show="!isActive">
-        <slot name="inactiveSwitch"></slot>
-      </div>
-
+    <div class="switch">
+      <slot name="activeSwitch"></slot>
     </div>
   </div>
 </template>
@@ -33,11 +24,6 @@ export default {
   props: {
     state: Boolean
   },
-  data () {
-    return {
-      isActive: this.state
-    }
-  },
   methods: {
     handleItemClick () {
       // 页面跳转路由
@@ -46,10 +32,6 @@ export default {
           name: 'HotList'
         })
       })
-    },
-    handleSwitchClick () {
-      // 状态切换
-      this.isActive = !this.isActive
     }
   }
 }

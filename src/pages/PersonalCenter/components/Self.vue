@@ -2,13 +2,22 @@
   <div class="self-container">
     <div><img :src="headsrc"></div>
     <div class="info">
-      <div>
-        <!-- {{username}} -->
+      <div v-if="loaded">
+        {{username}}
+      </div>
+      <div v-else>
         前往注册/登录
       </div>
       <div>
-        <!-- <el-button type="danger">安全退出</el-button> -->
-        <el-button type="success">前往注册/登录</el-button>
+        <el-button
+          type="danger"
+          v-if="loaded"
+        >安全退出</el-button>
+        <el-button
+          type="success"
+          v-else
+          @click="goToLogin"
+        >前往注册/登录</el-button>
       </div>
     </div>
   </div>
@@ -20,6 +29,18 @@ export default {
   props: {
     username: String,
     headsrc: String
+  },
+  data () {
+    return {
+      loaded: false
+    }
+  },
+  methods: {
+    goToLogin () {
+      this.$router.push({
+        name: 'Login'
+      })
+    }
   }
 
 }
