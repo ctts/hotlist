@@ -1,6 +1,9 @@
 <template>
   <div>
     <list-header>
+      <template v-slot:left>
+        <i class="el-icon-back"></i>
+      </template>
       <template v-slot:content>{{headername}}</template>
     </list-header>
     <div

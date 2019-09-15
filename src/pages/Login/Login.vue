@@ -86,10 +86,14 @@ export default {
       }
       loginTo(this.userdata)
         .then(res => {
+          console.log(res)
           if (res.data.result === 1 || res.data.result === 2) {
             localStorage.username = this.userdata.username
             localStorage.userimg = this.userdata.userimg
+            localStorage.token = res.data.token
             this.$router.replace({ name: 'Person' })
+          } else {
+            alert('密码错误')
           }
         })
         .catch(() => {

@@ -1,10 +1,6 @@
 <template>
   <div class="self-container">
     <div>
-      <!-- <img
-        v-if="imageUrl !== ''"
-        :src="imageUrl"
-      > -->
       <!-- 上传头像模块 -->
       <el-upload
         class="avatar-uploader"

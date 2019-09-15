@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { getHotData } from '@/request/api'
 export default {
   name: 'ListBody',
   data () {
@@ -24,14 +25,9 @@ export default {
     }
   },
   mounted: function () {
-    this.axios(`http://localhost:3000/${this.webname}`, {
-      method: 'get'
-    })
+    getHotData(this.webname)
       .then(response => {
         this.hotData = response.data.listData
-      })
-      .catch((err) => {
-        console.log(err)
       })
   }
 }
