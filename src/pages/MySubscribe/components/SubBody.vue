@@ -7,7 +7,7 @@
       v-for="item of sourceList"
       @click.native.capture="handleIconClick(item)"
       :key="item.id"
-      :state="item.state"
+      :status="item.status"
     >
       <template v-slot:icon>
         <img :src="item.imgsrc">
@@ -17,7 +17,7 @@
       </template>
       <template v-slot:activeSwitch>
         <el-switch
-          v-model="item.state"
+          v-model="item.status"
           active-color="#13ce66"
           inactive-color="#ff4949"
         >
@@ -54,37 +54,37 @@ export default {
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'weibo',
-        state: true
+        status: true
       }, {
         id: 2,
         imgsrc: '../static/images/zhihu.png',
         title: '知乎热搜榜',
         name: 'zhihu',
-        state: false
+        status: false
       }, {
         id: 3,
         imgsrc: '../static/images/haoqixin.png',
         title: '好奇心日报',
         name: 'haoqixin',
-        state: true
+        status: true
       }, {
         id: 4,
         imgsrc: '../static/images/github.png',
         title: 'github榜',
         name: 'github',
-        state: true
+        status: true
       }, {
         id: 5,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'weibo',
-        state: true
+        status: true
       }, {
         id: 6,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'weibo',
-        state: true
+        status: true
       }]
     }
   },

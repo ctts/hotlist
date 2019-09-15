@@ -5,7 +5,7 @@
     </div>
     <el-button
       type="success"
-      v-if="!state"
+      v-if="!status"
       @click="handleButtonClick"
     >订阅</el-button>
     <el-button
@@ -22,18 +22,18 @@ export default {
   data () {
     return {
       listImage: '',
-      state: false
+      status: false
     }
   },
   methods: {
     handleButtonClick () {
-      this.state = !this.state
+      this.status = !this.status
     }
   },
   mounted () {
     let hot = this.$store.getters.getlist
     this.listImage = hot.imgsrc
-    this.state = hot.state
+    this.status = hot.status
   }
 }
 </script>

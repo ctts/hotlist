@@ -50,6 +50,7 @@
 
 <script>
 import LoginHead from '@/components/PageHeader/PageHeader'
+import { loginTo } from '@/request/api'
 export default {
   name: 'Login',
   data () {
@@ -83,14 +84,16 @@ export default {
       if (this.userdata.username.trim() === '' || this.userdata.password.trim() === '') {
         return
       }
-      this.axios
-        .post('http://localhost:3000/login', this.userdata)
+      loginTo(this.userdata)
         .then(res => {
           if (res.data.result === 1 || res.data.result === 2) {
-            this.$store.commit('setUser', this.userdata)
-            console.log(this.$store.getters.getUser)
+            localStorage.username = this.userdata.username
+            localStorage.userimg = this.userdata.userimg
             this.$router.replace({ name: 'Person' })
           }
+        })
+        .catch(() => {
+          alert('网络连接失败')
         })
     }
   },

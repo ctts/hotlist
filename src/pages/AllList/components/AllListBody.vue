@@ -49,37 +49,37 @@ export default {
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'weibo',
-        state: true
+        status: true
       }, {
         id: 2,
         imgsrc: '../static/images/zhihu.png',
         title: '知乎热搜榜',
         name: 'zhihu',
-        state: false
+        status: false
       }, {
         id: 3,
         imgsrc: '../static/images/haoqixin.png',
         title: '好奇心日报',
         name: 'haoqixin',
-        state: true
+        status: true
       }, {
         id: 4,
         imgsrc: '../static/images/github.png',
         title: 'github榜',
         name: 'github',
-        state: true
+        status: true
       }, {
         id: 5,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'zhihu',
-        state: true
+        status: true
       }, {
         id: 6,
         imgsrc: '../static/images/weibo.png',
         title: '微博热搜榜',
         name: 'zhihu',
-        state: true
+        status: true
       }]
     }
   },

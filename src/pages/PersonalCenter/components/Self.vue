@@ -59,8 +59,8 @@ export default {
     }
   },
   created () {
-    this.username = this.$store.getters.getUser.username
-    this.userimg = this.$store.getters.getUser.userimg
+    this.username = localStorage.username
+    this.userimg = localStorage.username
     if (this.username !== '') {
       this.loaded = true
     }
@@ -72,7 +72,8 @@ export default {
       })
     },
     safeOut () {
-      this.$store.commit('setUser', {})
+      localStorage.removeItem('username')
+      localStorage.removeItem('userimg')
       this.$router.replace({ 'name': 'Login' })
     },
 
