@@ -101,7 +101,7 @@ export default {
 .container {
   padding: 0.5rem;
   background: #fff;
-  margin: 0.3rem 0rem;
+  margin: 0 0.3rem 0;
 }
 
 .title {

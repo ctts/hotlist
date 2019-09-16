@@ -115,5 +115,6 @@ h5 {
   right: 0;
   top: 49px;
   bottom: 49px;
+  background: #fff;
 }
 </style>

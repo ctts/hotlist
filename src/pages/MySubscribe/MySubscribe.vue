@@ -1,39 +1,35 @@
 <template>
   <div>
-    <list-header>
-      <template v-slot:left>
-        <i class="el-icon-back"></i>
-      </template>
-      <template v-slot:content>{{headername}}</template>
-    </list-header>
+    <sub-header>
+      <template v-slot:content>快速订阅</template>
+    </sub-header>
     <div
-      class="wapper"
       ref="listContant"
+      class="wapper"
     >
       <div>
-        <list-title></list-title>
-        <list-body></list-body>
+        <sub-body></sub-body>
+        <sub-body></sub-body>
+        <sub-body></sub-body>
+        <sub-body></sub-body>
+        <sub-body></sub-body>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import ListHeader from '@/components/PageHeader/PageHeader'
-import ListTitle from './componemts/HotListTitle'
-import ListBody from './componemts/HotListBody'
+import SubHeader from '@/components/PageHeader/PageHeader'
+import SubBody from './components/SubBody'
 import Bscroll from 'better-scroll'
 export default {
-  name: 'HotList',
+  name: 'Subscribe',
   components: {
-    ListTitle,
-    ListBody,
-    ListHeader
+    SubHeader,
+    SubBody
   },
   data () {
     return {
-      headername: this.$store.getters.getlist.title,
       options: {
         scrollY: true,
         scrollX: false,
@@ -57,6 +53,7 @@ export default {
   right: 0;
   top: 49px;
   bottom: 49px;
-  background: #ffffff;
+  overflow: hidden;
+  background: #fff;
 }
 </style>

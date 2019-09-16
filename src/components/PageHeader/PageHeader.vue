@@ -14,7 +14,6 @@
         <slot name="right"></slot>
       </div>
     </div>
-    <div class="placeholder"></div>
   </div>
 
 </template>
@@ -57,11 +56,5 @@ export default {
 }
 .content {
   flex: 1;
-}
-
-.placeholder {
-  height: 49px;
-  margin: 0;
-  padding: 0;
 }
 </style>

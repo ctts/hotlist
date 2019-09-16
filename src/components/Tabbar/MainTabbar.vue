@@ -50,7 +50,7 @@ export default {
         inactive_content: '#el-iconwujiaoxing_kong',
         active_content: '#el-iconstar-copy',
         text: '订阅',
-        to: '/subscribe',
+        to: '/mysubscribe',
         isActive: true
       }, {
         id: 3,

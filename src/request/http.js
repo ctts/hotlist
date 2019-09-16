@@ -7,6 +7,9 @@ var instance = axios.create({
 })
 // 默认url
 instance.defaults.baseURL = 'http://localhost:3000'
+if (localStorage.token) {
+  instance.defaults.headers.Authorization = localStorage.token
+}
 
 // 默认请求头
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -58,8 +61,11 @@ axios.interceptors.request.use(
     // 添加token
     const token = localStorage.token
     token && (config.headers.Authorization = token)
+    return config
   },
-  error => Promise.error(error)
+  error => {
+    return Promise.error(error)
+  }
 )
 
 // 默认响应拦截器
@@ -70,7 +76,9 @@ instance.interceptors.response.use(
   },
   error => {
     // 和后台协商自定义错误码
-    const { response } = error
+    const {
+      response
+    } = error
     errorHandle(error.status, response.data.message)
     return Promise.reject(response)
   }

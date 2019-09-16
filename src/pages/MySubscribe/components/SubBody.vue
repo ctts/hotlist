@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="icon-list"
-    ref="list"
-  >
+  <div class="icon-list">
     <list-item
       v-for="item of sourceList"
       @click.native.capture="handleIconClick(item)"

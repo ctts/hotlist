@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AllList from '@/pages/AllList/AllList'
-import MySubscribe from '@/pages/MySubscribe/Subscribe'
+import MySubscribe from '@/pages/MySubscribe/MySubscribe'
 import PersonalCenter from '@/pages/PersonalCenter/PersonalCenter'
 import HotList from '@/pages/HotList/HotList'
 import Login from '@/pages/Login/Login'
@@ -17,8 +17,8 @@ export default new Router({
     name: 'AllList',
     component: AllList
   }, {
-    path: '/subscribe',
-    name: 'Subscribe',
+    path: '/mysubscribe',
+    name: 'MySubscribe',
     component: MySubscribe
   }, {
     path: '/person',

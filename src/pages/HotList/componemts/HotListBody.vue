@@ -27,6 +27,7 @@ export default {
   mounted: function () {
     getHotData(this.webname)
       .then(response => {
+        console.log(response)
         this.hotData = response.data.listData
       })
   }
