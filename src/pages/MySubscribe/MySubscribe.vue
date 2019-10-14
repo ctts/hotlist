@@ -1,7 +1,7 @@
 <template>
   <div>
     <sub-header>
-      <template v-slot:content>快速订阅</template>
+      <template #content>快速订阅</template>
     </sub-header>
     <div
       ref="listContant"

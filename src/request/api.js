@@ -1,11 +1,11 @@
 import axios from './http'
 
 const loginTo = (userdata) => {
-  return axios.post('http://localhost:3000/login', userdata)
+  return axios.post('/login', userdata)
 }
 
 const getHotData = (web) => {
-  return axios.get('http://localhost:3000/' + web)
+  return axios.get('/website/' + web)
 }
 
 export {

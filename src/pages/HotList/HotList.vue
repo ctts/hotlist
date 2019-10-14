@@ -1,10 +1,10 @@
 <template>
   <div>
     <list-header>
-      <template v-slot:left>
+      <template #left>
         <i class="el-icon-back"></i>
       </template>
-      <template v-slot:content>{{headername}}</template>
+      <template #content>{{headername}}</template>
     </list-header>
     <div
       class="wapper"
@@ -15,7 +15,6 @@
         <list-body></list-body>
       </div>
     </div>
-
   </div>
 </template>
 

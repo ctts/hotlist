@@ -2,17 +2,16 @@
   <div class="icon-list">
     <list-item
       v-for="item of sourceList"
-      @click.native.capture="handleIconClick(item)"
       :key="item.id"
-      :status="item.status"
+      :source="item"
     >
-      <template v-slot:icon>
+      <template #icon>
         <img :src="item.imgsrc">
       </template>
-      <template v-slot:title>
+      <template #title>
         {{item.title}}
       </template>
-      <template v-slot:activeSwitch>
+      <template #activeSwitch>
         <el-switch
           v-model="item.status"
           active-color="#13ce66"
@@ -36,12 +35,6 @@ export default {
   name: 'SubBody',
   components: {
     ListItem
-  },
-  methods: {
-    handleIconClick (item) {
-      // 将icon的属性保存在store
-      this.$store.commit('setlist', item)
-    }
   },
   data () {
     return {

@@ -22,10 +22,19 @@
 export default {
   name: 'ListItem',
   props: {
-    state: Boolean
+    status: Boolean,
+    source: {
+      id: Number,
+      imgsrc: String,
+      title: String,
+      name: String,
+      status: Boolean
+    }
   },
   methods: {
     handleItemClick () {
+      // 将icon的属性保存在store
+      this.$store.commit('setlist', this.source)
       // 页面跳转路由
       this.$nextTick(() => {
         this.$router.push({

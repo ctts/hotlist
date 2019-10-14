@@ -8,13 +8,13 @@
     <div class="list-wapper">
       <list-item
         v-for="item of sourceList"
-        @click.native.capture="handleIconClick(item)"
         :key="item.id"
+        :source="item"
       >
-        <template v-slot:icon>
+        <template #icon>
           <img :src="item.imgsrc">
         </template>
-        <template v-slot:title>
+        <template #title>
           {{item.title}}
         </template>
       </list-item>
@@ -34,12 +34,6 @@ export default {
   name: 'alllistBody',
   components: {
     ListItem
-  },
-  methods: {
-    handleIconClick (item) {
-      // 将icon的属性保存在store
-      this.$store.commit('setlist', item)
-    }
   },
   data () {
     return {

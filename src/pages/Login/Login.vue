@@ -1,10 +1,10 @@
 <template>
   <div>
     <login-head>
-      <template v-slot:left>
+      <template #left>
         <i class="el-icon-back"></i>
       </template>
-      <template v-slot:content>
+      <template #content>
         登录
       </template>
     </login-head>

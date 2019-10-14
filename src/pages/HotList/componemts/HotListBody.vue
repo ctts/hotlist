@@ -2,14 +2,14 @@
   <div class="list-container">
     <div
       v-for='item of hotData'
-      :key='item.id'
+      :key='item.infoNumber'
       class="list-item"
     >
-      <span>{{item.id+'.'}}</span>
+      <span>{{item.infoNumber+'.'}}</span>
       <a
-        :href='item.url'
+        :href='item.infoURL'
         target='_blank'
-      >{{item.title}}</a>
+      >{{item.infoContent}}</a>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
     getHotData(this.webname)
       .then(response => {
         console.log(response)
-        this.hotData = response.data.listData
+        this.hotData = response.data
       })
   }
 }
