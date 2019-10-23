@@ -4,10 +4,15 @@
       <!-- 上传头像模块 -->
       <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        action=""
+        accept="image/gif, image/jpeg, image/png"
+        :limit="2"
+        :on-exceed="handleExceed"
         :show-file-list="false"
+        :auto-upload="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
+        :on-change="handleImageUpload"
       >
         <img
           v-if="imageUrl"
@@ -45,6 +50,7 @@
 </template>
 
 <script>
+import { postUserImage } from '../../../request/api'
 export default {
   name: 'self',
   data () {
@@ -70,14 +76,28 @@ export default {
     safeOut () {
       localStorage.removeItem('username')
       localStorage.removeItem('userimg')
+      localStorage.removeItem('token')
       this.$router.replace({ 'name': 'Login' })
     },
-
-    // 图片上传
+    handleExceed () {
+      alert('只能上传一张图片！')
+    },
+    // 图片上传成功
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
     },
-
+    // 图片上传
+    handleImageUpload (file) {
+      let config = {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }
+      let formdata = new FormData()
+      formdata.set('userImage', file)
+      postUserImage(formdata, config)
+        .then(res => {
+          console.log(res)
+        })
+    },
     // 图片校验
     beforeAvatarUpload (file) {
       const isJPG = file.type === 'image/jpeg' || 'image/png'
