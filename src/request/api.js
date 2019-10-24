@@ -12,7 +12,7 @@ const getHotData = (web) => {
 
 // 上传用户头像
 const postUserImage = (formdata, config) => {
-  return axios.post('/images', formdata, config)
+  return axios.post('/upload', formdata, config)
 }
 
 export {

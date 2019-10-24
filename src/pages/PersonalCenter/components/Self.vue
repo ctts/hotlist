@@ -6,13 +6,14 @@
         class="avatar-uploader"
         action=""
         accept="image/gif, image/jpeg, image/png"
-        :limit="2"
+        ref="upload"
+        :limit="1"
         :on-exceed="handleExceed"
         :show-file-list="false"
-        :auto-upload="false"
+        :auto-upload="true"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
-        :on-change="handleImageUpload"
+        :http-request="myUpload"
       >
         <img
           v-if="imageUrl"
@@ -51,6 +52,7 @@
 
 <script>
 import { postUserImage } from '../../../request/api'
+import global from '../../../global/global'
 export default {
   name: 'self',
   data () {
@@ -62,9 +64,12 @@ export default {
   },
   created () {
     this.username = localStorage.username
-    this.userimg = localStorage.username
-    if (this.username !== '') {
+    if (this.username) {
       this.loaded = true
+    }
+
+    if (localStorage.imageUrl) {
+      this.imageUrl = global.DEFAULT_URL + '/static/userHead/' + localStorage.imageUrl
     }
   },
   methods: {
@@ -74,11 +79,14 @@ export default {
       })
     },
     safeOut () {
-      localStorage.removeItem('username')
-      localStorage.removeItem('userimg')
-      localStorage.removeItem('token')
+      // localStorage.removeItem('username')
+      // localStorage.removeItem('imageUrl')
+      // localStorage.removeItem('token')
+      this.loaded = false
+      localStorage.clear()
       this.$router.replace({ 'name': 'Login' })
     },
+    // 警告
     handleExceed () {
       alert('只能上传一张图片！')
     },
@@ -87,29 +95,38 @@ export default {
       this.imageUrl = URL.createObjectURL(file.raw)
     },
     // 图片上传
-    handleImageUpload (file) {
+    myUpload (content) {
+      // 清空内容，用于下次修改头像
+      this.$refs.upload.clearFiles()
       let config = {
         headers: { 'Content-Type': 'multipart/form-data' }
       }
       let formdata = new FormData()
-      formdata.set('userImage', file)
+      formdata.append('username', localStorage.getItem('username'))
+      formdata.append('userimg', content.file)
       postUserImage(formdata, config)
         .then(res => {
           console.log(res)
+          // 完成后，设置头像图片
+          console.log(res)
+          let userHeadImg = global.DEFAULT_URL + '/static/userHead/' + res.data.userimg
+          this.imageUrl = userHeadImg
+          // 存入localstorage
+          localStorage.setItem('imageUrl', userHeadImg)
         })
     },
     // 图片校验
     beforeAvatarUpload (file) {
       const isJPG = file.type === 'image/jpeg' || 'image/png'
-      const isLt2M = file.size / 1024 / 1024 < 3
+      const isLt3M = file.size / 1024 / 1024 < 3
 
       if (!isJPG) {
         alert('上传头像图片只能是 JPG或PNG 格式!')
       }
-      if (!isLt2M) {
+      if (!isLt3M) {
         alert('上传头像图片大小不能超过 3MB!')
       }
-      return isJPG && isLt2M
+      return isJPG && isLt3M
     }
   }
 }

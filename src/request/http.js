@@ -1,12 +1,14 @@
 import axios from 'axios' // 引入axios
 import router from '../router/index'
+import global from '../global/global'
 
 // 创建axios并设置超时时间
 var instance = axios.create({
   timeout: 1000 * 10
 })
 // 默认url
-instance.defaults.baseURL = 'http://localhost:3000'
+instance.defaults.baseURL = global.DEFAULT_URL
+// instance.defaults.baseURL = 'http://localhost:3000'
 
 // 默认请求头
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'

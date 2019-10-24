@@ -87,14 +87,14 @@ export default {
       loginTo(this.userdata)
         .then(res => {
           console.log(res)
-          if (res.data.result === 1 || res.data.result === 2) {
+          if (res.data.result.status === 0) {
+            alert('密码错误或帐号已被注册')
+          } else {
             localStorage.username = this.userdata.username
-            localStorage.userimg = this.userdata.userimg
             localStorage.token = res.data.token
             this.$router.replace({ name: 'Person' })
-          } else {
-            alert('密码错误')
           }
+          localStorage.imageUrl = res.data.result.userimg
         })
         .catch(() => {
           alert('网络连接失败')
