@@ -1,21 +1,21 @@
 <template>
   <div class="list-container">
-    <div
+    <a
       v-for='item of hotData'
       :key='item.infoNumber'
       class="list-item"
+      @click="handlePostHistory(item)"
+      :href='item.infoURL'
+      target='_blank'
     >
-      <span>{{item.infoNumber+'.'}}</span>
-      <a
-        :href='item.infoURL'
-        target='_blank'
-      >{{item.infoContent}}</a>
-    </div>
+      <span>{{infoNumber(item)}}</span>
+      <p>{{item.infoContent}}</p>
+    </a>
   </div>
 </template>
 
 <script>
-import { getHotData } from '@/request/api'
+import { getHotData, postHistory } from '@/request/api'
 export default {
   name: 'ListBody',
   data () {
@@ -27,9 +27,20 @@ export default {
   mounted: function () {
     getHotData(this.webname)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         this.hotData = response.data
       })
+  },
+  methods: {
+    infoNumber (info) {
+      return info.infoNumber < 10 ? '0' + info.infoNumber + '.' : info.infoNumber + '.'
+    },
+    // 发送历史记录
+    handlePostHistory (item) {
+      // 添加用户名
+      item.username = localStorage.username
+      postHistory(item)
+    }
   }
 }
 </script>
@@ -54,13 +65,15 @@ span {
 
 a {
   text-decoration: none;
+  color: #000;
+}
+
+a p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   /*控制在2行*/
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-
-  color: #000;
 }
 </style>

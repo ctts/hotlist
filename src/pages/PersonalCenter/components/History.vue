@@ -1,28 +1,37 @@
 <template>
-  <div class="history-item">
+  <a
+    class="history-item"
+    :href="info.infoURL"
+    target="_black"
+  >
     <div class="icon-container">
-      <img :src="imgsrc">
+      <img :src="websrc(info.weblogo)">
     </div>
-    <div class="link">{{link}}</div>
-  </div>
+    <div class="infoURL">{{info.infoContent}}</div>
+  </a>
 </template>
 
 <script>
+import global from '../../../global/global'
 export default {
   name: 'History',
   props: {
-    imgsrc: String,
-    link: String
+    info: {
+      weblogo: String,
+      infoURL: String,
+      infoContent: String
+    }
   },
-  data () {
-    return {
+  methods: {
+    websrc (url) {
+      return global.DEFAULT_URL + global.WEBS_LOGO + url
     }
   }
 }
 </script>
 
 <style scoped>
-.link {
+.infoURL {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -34,6 +43,8 @@ export default {
   border-bottom: 1px solid #adadad;
   padding-bottom: 0.2rem;
   margin: 0.2rem;
+  text-decoration: none;
+  color: black;
 }
 .icon-container {
   width: 3rem;

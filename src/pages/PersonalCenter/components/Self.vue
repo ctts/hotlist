@@ -109,7 +109,7 @@ export default {
           console.log(res)
           // 完成后，设置头像图片
           console.log(res)
-          let userHeadImg = global.DEFAULT_URL + '/static/userHead/' + res.data.userimg
+          let userHeadImg = global.DEFAULT_URL + global.USER_HEAD + res.data.userimg
           this.imageUrl = userHeadImg
           // 存入localstorage
           localStorage.setItem('imageUrl', userHeadImg)

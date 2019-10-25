@@ -15,8 +15,20 @@ const postUserImage = (formdata, config) => {
   return axios.post('/upload', formdata, config)
 }
 
+// 上传历史记录
+const postHistory = (history) => {
+  return axios.post('/history/insertHistory', history)
+}
+
+// 上传历史记录
+const getHistory = (username) => {
+  return axios.get('/history/getHistory/' + username)
+}
+
 export {
   loginTo,
   getHotData,
-  postUserImage
+  postUserImage,
+  postHistory,
+  getHistory
 }

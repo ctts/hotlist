@@ -17,9 +17,8 @@
         <div class="history-list">
           <history
             v-for="item of historySource"
-            :key="item.id"
-            :imgsrc="item.imgsrc"
-            :link="item.link"
+            :key="item._id"
+            :info="item"
           ></history>
         </div>
       </div>
@@ -33,52 +32,13 @@ import ListHeader from '../../components/PageHeader/PageHeader'
 import Self from './components/Self'
 import History from './components/History'
 import Bscroll from 'better-scroll'
+import { getHistory } from '../../request/api'
 export default {
   name: 'PersonalCenter',
   data () {
     return {
       // headsrc: '../../../../static/images/head.jpg',
-      historySource: [{
-        id: 1,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111'
-      }, {
-        id: 2,
-        imgsrc: '../static/images/baidu.png',
-        link: '1111111111111111111111111111111111111'
-      }, {
-        id: 3,
-        imgsrc: '../static/images/zhihu.png',
-        link: '1111111111111111111111111111111111111'
-      }, {
-        id: 4,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 5,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 6,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 7,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 8,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 9,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }, {
-        id: 10,
-        imgsrc: '../static/images/weibo.png',
-        link: '1111111111111111111111111'
-      }],
+      historySource: [],
       options: {
         scrollY: true,
         scrollX: false,
@@ -93,7 +53,14 @@ export default {
     Self,
     History
   },
-  mounted: function () {
+  created () {
+    // 获取用户历史记录
+    getHistory(localStorage.username).then((res) => {
+      this.historySource = res.data.info
+      console.log(res)
+    })
+  },
+  mounted () {
     // options是better-scroll配置参数
     this.scroll = new Bscroll(this.$refs.historylist, this.options)
   }
