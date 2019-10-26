@@ -62,7 +62,9 @@ export default {
   },
   mounted () {
     // options是better-scroll配置参数
-    this.scroll = new Bscroll(this.$refs.historylist, this.options)
+    this.$nextTick(() => {
+      this.scroll = new Bscroll(this.$refs.historylist, this.options)
+    })
   }
 }
 </script>
