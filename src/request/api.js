@@ -25,10 +25,22 @@ const getHistory = (username) => {
   return axios.get('/history/getHistory/' + username)
 }
 
+// 更新订阅
+const addSubscription = (userdata) => {
+  return axios.post('/subscription/update', userdata)
+}
+
+// 获取订阅
+const getSubscription = () => {
+  return axios.get()
+}
+
 export {
   loginTo,
   getHotData,
   postUserImage,
   postHistory,
-  getHistory
+  getHistory,
+  addSubscription,
+  getSubscription
 }

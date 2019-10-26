@@ -2,7 +2,7 @@
   <div>
     <!-- 头部 -->
     <list-header>
-      <template v-slot:content>
+      <template #content>
         所有标签
       </template>
     </list-header>

@@ -3,37 +3,39 @@
     <div class="imageContainer">
       <img :src="listImage">
     </div>
-    <el-button
-      type="success"
-      v-if="!status"
-      @click="handleButtonClick"
-    >订阅</el-button>
-    <el-button
-      type="danger"
-      v-else
-      @click="handleButtonClick"
-    >取消订阅</el-button>
+    <subscription
+      :status="status"
+      :webname="webname"
+    >
+      <template #active>
+        <el-button type="success">订阅</el-button>
+      </template>
+      <template #inactive>
+        <el-button type="danger">取消订阅</el-button>
+      </template>
+    </subscription>
   </div>
 </template>
 
 <script>
+import Subscription from '../../../components/Subscription/Subscription'
 export default {
   name: 'ListTitle',
+  components: {
+    Subscription
+  },
   data () {
     return {
       listImage: '',
-      status: false
-    }
-  },
-  methods: {
-    handleButtonClick () {
-      this.status = !this.status
+      status: false,
+      webname: ''
     }
   },
   mounted () {
     let hot = this.$store.getters.getlist
     this.listImage = hot.imgsrc
     this.status = hot.status
+    this.webname = hot.name
   }
 }
 </script>

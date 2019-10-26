@@ -19,7 +19,7 @@
         </template>
       </list-item>
       <div
-        v-for="item of (useWidth-sourceList.length%useWidth)"
+        v-for="item of (useWidth - sourceList.length % useWidth)"
         :key="item+'-label'"
         class="list-item-temp"
       >
