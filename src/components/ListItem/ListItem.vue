@@ -13,14 +13,20 @@
       </div>
     </div>
     <!-- 开关 -->
-    <div class="switch">
-      <slot name="activeSwitch"></slot>
-    </div>
+    <subscription>
+      <template #switch>
+        <slot name="activeSwitch"></slot>
+      </template>
+    </subscription>
   </div>
 </template>
 <script>
+import Subscription from '../Subscription/Subscription'
 export default {
   name: 'ListItem',
+  components: {
+    Subscription
+  },
   props: {
     status: Boolean,
     source: {

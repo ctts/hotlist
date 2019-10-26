@@ -8,6 +8,7 @@
       name="inactive"
       v-else
     ></slot>
+    <slot name="switch"></slot>
   </div>
 </template>
 <script>
