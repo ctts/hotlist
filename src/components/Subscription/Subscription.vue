@@ -2,7 +2,7 @@
   <div @click="handleStatusChange">
     <slot
       name="active"
-      v-if="handleStatus"
+      v-if="!handleStatus"
     ></slot>
     <slot
       name="inactive"
@@ -21,11 +21,8 @@ export default {
   },
   data () {
     return {
-      handleStatus: true
+      handleStatus: this.status
     }
-  },
-  mounted () {
-    this.handleStatus = this.status
   },
   methods: {
     // 状态改变事件
@@ -46,6 +43,12 @@ export default {
           alert('服务器出错')
         }
       })
+    }
+  },
+  watch: {
+    status () {
+      this.handleStatus = this.status
+      // console.log(this.handleStatus)
     }
   }
 }

@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       hotData: null,
-      webname: this.$store.getters.getlist.name
+      webname: this.$store.getters.getlist.webname
     }
   },
   mounted: function () {

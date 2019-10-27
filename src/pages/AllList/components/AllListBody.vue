@@ -8,14 +8,14 @@
     <div class="list-wapper">
       <list-item
         v-for="item of sourceList"
-        :key="item.id"
+        :key="item._id"
         :source="item"
       >
         <template #icon>
-          <img :src="item.imgsrc">
+          <img :src="imgsrc(item.weblogo)">
         </template>
         <template #title>
-          {{item.title}}
+          {{item.weblocalname}}
         </template>
       </list-item>
       <div
@@ -30,6 +30,8 @@
 </template>
 <script>
 import ListItem from '@/components/ListItem/ListItem'
+import global from '../../../global/global'
+import { getAllWeb } from '../../../request/api'
 export default {
   name: 'alllistBody',
   components: {
@@ -38,48 +40,23 @@ export default {
   data () {
     return {
       screenWidth: document.body.clientWidth,
-      sourceList: [{
-        id: 1,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'weibo',
-        status: true
-      }, {
-        id: 2,
-        imgsrc: '../static/images/zhihu.png',
-        title: '知乎热搜榜',
-        name: 'zhihu',
-        status: false
-      }, {
-        id: 3,
-        imgsrc: '../static/images/haoqixin.png',
-        title: '好奇心日报',
-        name: 'haoqixin',
-        status: true
-      }, {
-        id: 4,
-        imgsrc: '../static/images/github.png',
-        title: 'github榜',
-        name: 'github',
-        status: true
-      }, {
-        id: 5,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'zhihu',
-        status: true
-      }, {
-        id: 6,
-        imgsrc: '../static/images/weibo.png',
-        title: '微博热搜榜',
-        name: 'zhihu',
-        status: true
-      }]
+      sourceList: []
     }
   },
   computed: {
     useWidth () {
       return Math.floor(this.screenWidth / 64)
+    }
+  },
+  created () {
+    getAllWeb(localStorage.username).then(res => {
+      // console.log(res)
+      this.sourceList = res.data
+    })
+  },
+  methods: {
+    imgsrc (weblogo) {
+      return global.DEFAULT_URL + global.WEBS_LOGO + weblogo
     }
   }
 }

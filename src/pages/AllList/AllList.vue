@@ -50,7 +50,7 @@ export default {
       }
     }
   },
-  mounted: function () {
+  created () {
     // options是better-scroll配置参数
     this.$nextTick(() => {
       this.scroll = new Bscroll(this.$refs.listContant, this.options)

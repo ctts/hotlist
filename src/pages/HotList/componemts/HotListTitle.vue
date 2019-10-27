@@ -19,6 +19,7 @@
 
 <script>
 import Subscription from '../../../components/Subscription/Subscription'
+import global from '../../../global/global'
 export default {
   name: 'ListTitle',
   components: {
@@ -33,9 +34,10 @@ export default {
   },
   mounted () {
     let hot = this.$store.getters.getlist
-    this.listImage = hot.imgsrc
+    console.log(hot)
+    this.listImage = global.DEFAULT_URL + global.WEBS_LOGO + hot.weblogo
     this.status = hot.status
-    this.webname = hot.name
+    this.webname = hot.webname
   }
 }
 </script>

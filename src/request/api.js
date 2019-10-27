@@ -20,7 +20,7 @@ const postHistory = (history) => {
   return axios.post('/history/insertHistory', history)
 }
 
-// 上传历史记录
+// 获取历史记录
 const getHistory = (username) => {
   return axios.get('/history/getHistory/' + username)
 }
@@ -35,6 +35,11 @@ const getSubscription = () => {
   return axios.get()
 }
 
+// 获取所有网站
+const getAllWeb = (username = '') => {
+  return axios.get('/allweb/' + username)
+}
+
 export {
   loginTo,
   getHotData,
@@ -42,5 +47,6 @@ export {
   postHistory,
   getHistory,
   addSubscription,
-  getSubscription
+  getSubscription,
+  getAllWeb
 }

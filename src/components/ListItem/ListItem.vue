@@ -13,7 +13,7 @@
       </div>
     </div>
     <!-- 开关 -->
-    <subscription>
+    <subscription :status="source.status">
       <template #switch>
         <slot name="activeSwitch"></slot>
       </template>
@@ -28,12 +28,10 @@ export default {
     Subscription
   },
   props: {
-    status: Boolean,
     source: {
-      id: Number,
-      imgsrc: String,
-      title: String,
-      name: String,
+      weblogo: String,
+      webname: String,
+      weblocalname: String,
       status: Boolean
     }
   },
@@ -42,10 +40,8 @@ export default {
       // 将icon的属性保存在store
       this.$store.commit('setlist', this.source)
       // 页面跳转路由
-      this.$nextTick(() => {
-        this.$router.push({
-          name: 'HotList'
-        })
+      this.$router.push({
+        name: 'HotList'
       })
     }
   }

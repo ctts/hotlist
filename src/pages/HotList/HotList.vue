@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      headername: this.$store.getters.getlist.title,
+      headername: this.$store.getters.getlist.weblocalname,
       options: {
         scrollY: true,
         scrollX: false,

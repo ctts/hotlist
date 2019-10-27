@@ -50,6 +50,10 @@ const errorHandle = (status, other) => {
       alert('请求的资源不存在')
       break
     default:
+      // 断网情况
+      if (other === 'Network Error') {
+        alert('网络连接中断')
+      }
       console.log(other)
   }
 }

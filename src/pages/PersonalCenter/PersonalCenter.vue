@@ -15,6 +15,16 @@
         <!-- 历史记录 -->
         <h5>浏览历史</h5>
         <div class="history-list">
+          <div
+            ref="hint"
+            class="hint"
+          >
+            <p>登录后可使用历史记录</p>
+            <img
+              src="../../../static/images/cry.png"
+              alt=""
+            >
+          </div>
           <history
             v-for="item of historySource"
             :key="item._id"
@@ -37,7 +47,6 @@ export default {
   name: 'PersonalCenter',
   data () {
     return {
-      // headsrc: '../../../../static/images/head.jpg',
       historySource: [],
       options: {
         scrollY: true,
@@ -53,18 +62,21 @@ export default {
     Self,
     History
   },
-  created () {
-    // 获取用户历史记录
-    getHistory(localStorage.username).then((res) => {
-      this.historySource = res.data.info
-      console.log(res)
-    })
-  },
   mounted () {
     // options是better-scroll配置参数
     this.$nextTick(() => {
       this.scroll = new Bscroll(this.$refs.historylist, this.options)
     })
+
+    // 获取用户历史记录
+    if (localStorage.username) {
+      getHistory(localStorage.username).then((res) => {
+        this.historySource = res.data.info
+        console.log(res)
+      })
+    } else {
+      this.$refs.hint.style.display = 'block'
+    }
   }
 }
 </script>
@@ -85,5 +97,13 @@ h5 {
   top: 49px;
   bottom: 49px;
   background: #fff;
+}
+
+.hint {
+  display: none;
+  color: red;
+  size: 12px;
+  margin: 0;
+  text-align: center;
 }
 </style>

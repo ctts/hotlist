@@ -7,9 +7,9 @@ let store = new Vuex.Store({
   state: {
     list: {
       status: false,
-      imgsrc: '',
-      title: '',
-      name: ''
+      weblogo: '',
+      webname: '',
+      weblocalname: ''
     }
   },
   //  设置get方法
