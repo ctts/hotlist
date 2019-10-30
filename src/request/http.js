@@ -75,7 +75,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   res => {
     // 只有状态为200时请求成功，否则抛错
-    return res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
+    return (res.status >= 200 && res.status <= 400) ? Promise.resolve(res) : Promise.reject(res)
   },
   error => {
     // 和后台协商自定义错误码

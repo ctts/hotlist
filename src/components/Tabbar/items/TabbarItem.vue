@@ -28,8 +28,23 @@ export default {
   },
   methods: {
     handleItemClick () {
-      if (!this.isActive) {
-        this.$router.replace(this.path)
+      // 先判断是否是其他Webview网页，若是则close，否则路由回退一格
+      /* eslint-disable */
+      if (window.plus) {  // 判断时候支持window.plus
+        let allWindows = plus.webview.all();
+        if (allWindows.length > 1) {
+          for (let i = 1; i < allWindows.length; i++) {
+            allWindows[i].close()
+          }
+        } else {
+          if (!this.isActive) {
+            this.$router.replace(this.path)
+          }
+        }
+      } else {
+        if (!this.isActive) {
+          this.$router.replace(this.path)
+        }
       }
     }
   },

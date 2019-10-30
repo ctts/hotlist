@@ -112,7 +112,7 @@ export default {
           let userHeadImg = global.DEFAULT_URL + global.USER_HEAD + res.data.userimg
           this.imageUrl = userHeadImg
           // 存入localstorage
-          localStorage.setItem('imageUrl', userHeadImg)
+          localStorage.setItem('imageUrl', res.data.userimg)
         })
     },
     // 图片校验

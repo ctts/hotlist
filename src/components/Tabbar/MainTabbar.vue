@@ -1,5 +1,8 @@
 <template>
-  <div class="main-tabbar">
+  <div
+    class="main-tabbar"
+    v-if="tabbarFlag"
+  >
     <tabbar-item
       v-for="item of iconfonts"
       :key="item.id"
@@ -38,6 +41,9 @@ export default {
   },
   data () {
     return {
+      realScreenHeight: document.documentElement.clientHeight,
+      screenHeight: document.documentElement.clientHeight,
+      tabbarFlag: true,
       iconfonts: [{
         id: 1,
         inactive_content: '#el-iconfaxian2',
@@ -67,6 +73,18 @@ export default {
       for (let obj of this.iconfonts) {
         obj.isActive = (obj.to === to.fullPath)
       }
+    },
+    screenHeight (val) {
+      this.screenHeight = val
+      this.tabbarFlag = this.screenHeight >= this.realScreenHeight
+    }
+  },
+  mounted () {
+    const that = this
+    window.onresize = () => {
+      return (() => {
+        that.screenHeight = document.documentElement.clientHeight
+      })()
     }
   }
 }

@@ -5,8 +5,6 @@
       :key='item.infoNumber'
       class="list-item"
       @click="handlePostHistory(item)"
-      :href='item.infoURL'
-      target='_blank'
     >
       <span>{{infoNumber(item)}}</span>
       <p>{{item.infoContent}}</p>
@@ -39,7 +37,13 @@ export default {
     handlePostHistory (item) {
       // 添加用户名
       item.username = localStorage.username
+      // 开始发送
       postHistory(item)
+
+      // 测试
+      /* eslint-disable */
+      var embed = plus.webview.create(item.infoURL, '', { top: '49px', bottom: '49px' });
+      plus.webview.currentWebview().append(embed);
     }
   }
 }

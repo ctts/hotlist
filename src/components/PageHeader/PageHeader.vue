@@ -23,7 +23,20 @@ export default {
   name: 'PageHeader',
   methods: {
     turnBack () {
-      this.$router.back(-1)
+      // 先判断是否是其他Webview网页，若是则close，否则路由回退一格
+      /* eslint-disable */
+      if (window.plus) {
+        let allWindows = plus.webview.all();
+        if (allWindows.length > 1) {
+          for (let i = 1; i < allWindows.length; i++) {
+            allWindows[i].close()
+          }
+        } else {
+          this.$router.back(-1)
+        }
+      } else {
+        this.$router.back(-1)
+      }
     }
   }
 }

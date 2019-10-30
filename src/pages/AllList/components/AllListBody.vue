@@ -50,7 +50,7 @@ export default {
   },
   created () {
     getAllWeb(localStorage.username).then(res => {
-      // console.log(res)
+      console.log(res)
       this.sourceList = res.data
     })
   },

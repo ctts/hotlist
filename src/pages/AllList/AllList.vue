@@ -17,13 +17,13 @@
           <div>我的榜单</div>
         </list-body>
         <!-- 热门列表 -->
-        <list-body>
+        <!-- <list-body>
           <div>热门榜单</div>
-        </list-body>
+        </list-body> -->
         <!-- 其他榜单 -->
-        <list-body>
+        <!-- <list-body>
           <div>热门榜单</div>
-        </list-body>
+        </list-body> -->
       </div>
     </div>
   </div>

@@ -9,41 +9,43 @@
       </template>
     </login-head>
     <div class="wrapper">
-      <div class="head-img">
-        <img src="../../../static/images/head.jpg">
+      <div class="container">
+        <div class="head-img">
+          <img src="../../../static/images/head.jpg">
+        </div>
+        <el-form
+          label-position="right"
+          :model="userdata"
+          :rules="rules"
+          ref="ruleForm"
+        >
+          <el-form-item prop="username">
+            <el-input
+              v-model="userdata.username"
+              placeholder="账号"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              v-model="userdata.password"
+              :type="showType"
+              placeholder="密码"
+              autocomplete="off"
+            ><i
+                slot="suffix"
+                class="element-icons"
+                :class="eyes"
+                @click="lookOrHide"
+              ></i></el-input>
+          </el-form-item>
+        </el-form>
+        <el-button
+          type="success"
+          plain
+          @click="login"
+        >登录/注册</el-button>
       </div>
-      <el-form
-        label-position="right"
-        :model="userdata"
-        :rules="rules"
-        ref="ruleForm"
-      >
-        <el-form-item prop="username">
-          <el-input
-            v-model="userdata.username"
-            placeholder="账号"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            v-model="userdata.password"
-            :type="showType"
-            placeholder="密码"
-            autocomplete="off"
-          ><i
-              slot="suffix"
-              class="element-icons"
-              :class="eyes"
-              @click="lookOrHide"
-            ></i></el-input>
-        </el-form-item>
-      </el-form>
-      <el-button
-        type="success"
-        plain
-        @click="login"
-      >登录/注册</el-button>
     </div>
   </div>
 </template>
@@ -121,18 +123,19 @@ img {
   border-radius: 50%;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  position: absolute;
-  top: 50%;
-  bottom: 49px;
-  left: 0;
-  right: 0;
-  transform: translateY(-70%);
+  height: 90vh;
 }
 
 .el-form-item {
